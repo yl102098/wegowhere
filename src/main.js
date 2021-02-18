@@ -5,6 +5,6 @@ import router from './router'
 Vue.config.productionTip = false
 
 new Vue({
-  router,
+  router,       //路由就是根据网址的不同，返回不同的内容给用户
   render: h => h(App)
 }).$mount('#app')
