@@ -103,6 +103,7 @@ export default {
   height: 0;
   padding-bottom: 50%;
   .icon {
+      
     position: relative;
     overflow: hidden;
     float: left;
@@ -110,6 +111,7 @@ export default {
     height: 0px;
     padding-bottom: 25%;
     .icon-img {
+      margin-top: .1rem;
       position: absolute;
       top: 0px;
       left: 0px;
