@@ -2,15 +2,15 @@
   <div>
     <div class="header">
       <div class="header-left">
-          <div class="iconfont back-icon">&#xe66f;</div>
+        <div class="iconfont back-icon">&#xe66f;</div>
       </div>
       <div class="header-input">
-          <span class="iconfont">&#xe635;</span>
-          输入城市/景点/游玩主题
+        <span class="iconfont">&#xe635;</span>
+        输入城市/景点/游玩主题
       </div>
       <div class="header-right">
-          城市
-          <span class="iconfont arrow-icon">&#xe6aa;</span>
+        城市
+        <span class="iconfont arrow-icon">&#xe6aa;</span>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
 export default {
   name: "HomeHeader",
 };
-</script>
+</script>	
 
 // 1 rem  = html font-size  =50px
 <style scoped lang="less">
@@ -32,9 +32,9 @@ export default {
   .header-left {
     width: 0.64rem;
     float: left;
-    .back-icon{
-        text-align: center;
-        font-size: .4rem;
+    .back-icon {
+      text-align: center;
+      font-size: 0.4rem;
     }
   }
   .header-input {
@@ -52,9 +52,9 @@ export default {
     width: 1.24rem;
     float: right;
     text-align: center;
-    .arrow-icon{
-        margin-left: -0.08rem;
-        font-size: 0.24rem;
+    .arrow-icon {
+      margin-left: -0.08rem;
+      font-size: 0.24rem;
     }
   }
 }
