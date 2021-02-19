@@ -1,17 +1,18 @@
 <template>
   <div>
-    <div class="title">热销推荐</div>
+    <div class="title">周末去哪儿</div>
     <ul>
       <li
-        class="item"
+        class="item border-bottom"
         v-for="item of recommendList"
         :key="item.id"
       >
-        <img class="item-img" :src="item.imgUrl" />
+        <div class="item-img-wrapper">
+          <img class="item-img" :src="item.imgUrl" />
+        </div>
         <div class="item-info">
           <p class="item-title">{{ item.itemTitle }}</p>
           <p class="item-desc">{{ item.itemDesc }}</p>
-          <button class="item-button">查看详情</button>
         </div>
       </li>
     </ul>
@@ -20,7 +21,7 @@
 
 <script>
 export default {
-  name: "HomeRecommend",
+  name: "HomeWeekend",
   data() {
     return {
       recommendList: [
@@ -101,33 +102,30 @@ export default {
   background-color: #eee;
   text-indent: 0.2rem; //缩进多少像素
 }
-.item {
+.item-img-wrapper {
   overflow: hidden;
-  display: flex;
-  height: 1.9rem;
+  height: 0;
+  padding-bottom: 33.9%;
   .item-img {
-    width: 1.7rem;
-    height: 1.7rem;
-    padding: 0.1rem;
+  width: 100%;
+}
+}
+
+.item-info {
+  padding: 0.1rem;
+  .item-title {
+    line-height: 0.54rem;
+    font-size: 0.32rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
-  .item-info {
-    flex: 1;
-    padding: 0.2rem;
-    min-width: 0;
-    .item-title {
-      line-height: 0.54rem;
-      font-size: 0.32rem;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    .item-desc {
-      line-height: 0.4rem;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      color: #ccc;
-    }
+  .item-desc {
+    line-height: 0.4rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #ccc;
   }
 }
 </style>

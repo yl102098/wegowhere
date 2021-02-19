@@ -19,7 +19,7 @@ export default {
   data() {
     return {
         swiperOption: {
-        loop:true
+        // loop:true
       },
       iconList: [
         {
