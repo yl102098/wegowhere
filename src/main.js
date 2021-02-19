@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Home from './pages/home/Home.vue'
+import App from './App.vue'
 import router from './router'
 import fastclick from 'fastclick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -16,5 +16,5 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 new Vue({
   router,       //路由就是根据网址的不同，返回不同的内容给用户
-  render: h => h(Home)
+  render: h => h(App)
 }).$mount('#app')
