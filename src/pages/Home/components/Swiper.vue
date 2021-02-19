@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="wrapper">
-      <swiper :options="swiperOption" aria-autocomplete="">
-        <swiper-slide v-for="item of swiperList" :key="item.id">
+      <swiper :options="swiperOption" v-if="showSwiper" >
+        <swiper-slide v-for="item of list" :key="item.id">
           <img class="swiper-img" :src="item.imgUrl" alt="" />
         </swiper-slide>
         <!-- Optional controls -->
@@ -19,6 +19,9 @@
 <script>
 export default {
   name: "HomeSwiper",
+  props:{
+    list:Array
+  },
   data() {
     return {
       swiperOption: {
@@ -30,25 +33,14 @@ export default {
         autoplay:3000,
         disableOnInteraction: false, // 用户操作swiper之后，是否禁止autoplay
       },
-      swiperList: [
-        {
-          id: 1001,
-          imgUrl:
-            "//imgs.qunarzz.com/vs_ceph_vcimg/f7813c9431796cc32ae7b7a78447342e.jpeg",
-        },
-        {
-          id: 1002,
-          imgUrl:
-            "//imgs.qunarzz.com/vs_ceph_vcimg/569cae4ae98e9793f7341e85eed73c54.jpeg",
-        },
-        {
-          id: 1003,
-          imgUrl:
-            "//imgs.qunarzz.com/vs_ceph_vcimg/f03f5ac90ae59d0d9c6332a2bfd9782e.jpeg",
-        },
-      ],
     };
+    
   },
+  computed:{
+      showSwiper(){
+        return this.list.length
+      }
+    }
 };
 </script>
 
