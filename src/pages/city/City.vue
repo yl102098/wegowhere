@@ -2,8 +2,12 @@
   <div>
     <Header></Header>
     <Search></Search>
-    <List :cities="cities" :hotCities="hotCities"></List>
-    <Alphabet :cities="cities"></Alphabet>
+    <List :cities="cities" :hotCities="hotCities" :letter="letter"></List>
+    <Alphabet 
+      :letter="letter"
+      :cities="cities"
+      @change="this.handdleLetterChange"
+    ></Alphabet>
   </div>
 </template>
 
@@ -25,6 +29,7 @@ export default {
     return {
       cities: {},
       hotCities: [],
+      letter:""
     };
   },
   methods: {
@@ -40,6 +45,10 @@ export default {
         this.hotCities = data.hotCities;
       }
     },
+    handdleLetterChange(letter){
+      console.log("letter",letter)
+      this.letter=letter
+    }
   },
 
   mounted() {

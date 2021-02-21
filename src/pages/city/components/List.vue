@@ -2,7 +2,7 @@
   <div class="list" ref="wrapper">
     <div class="content">
       <div class="area">
-        <div class="title border-topbottom">当前城市</div>
+        <div class="title border-topbottom">当前城市{{letter}}</div>
         <div class="button-list">
           <div class="button-wrapper">
             <div class="button">北京</div>
@@ -17,10 +17,16 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item,key) of cities" :key="key">
-        <div class="title border-topbottom">{{key}}</div>
+      <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
+        <div class="title border-topbottom">{{ key }}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="inItem of item" :key="inItem.id">{{inItem.name}}</div>
+          <div
+            class="item border-bottom"
+            v-for="inItem of item"
+            :key="inItem.id"
+          >
+            {{ inItem.name }}
+          </div>
         </div>
       </div>
     </div>
@@ -34,10 +40,21 @@ export default {
   props: {
     hotCities: Array,
     cities: Object,
+    letter: String,
   },
   mounted() {
     this.scroll = new Bscroll(this.$refs.wrapper);
     console.log(this.scroll);
+
+  },
+  watch: {
+    letter() {
+        if(this.letter){
+            const element = this.$refs[this.letter][0]
+            console.log("333",element)
+            this.scroll.scrollToElement(element)  //将DOM元素传入进去，实现跳转
+        }
+    },
   },
 };
 </script>
