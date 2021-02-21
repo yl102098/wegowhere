@@ -17,6 +17,7 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import List from "./components/List";
 import Alphabet from "./components/Alphabet";
+import {mapState} from 'vuex'
 export default {
   name: "City",
   components: {
@@ -31,6 +32,9 @@ export default {
       hotCities: [],
       letter: "",
     };
+  },
+  computed:{
+    ...mapState(['city'])
   },
   methods: {
     getCityInfo() {
