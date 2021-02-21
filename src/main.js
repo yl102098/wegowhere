@@ -8,6 +8,7 @@ import less from 'less'
 import './assets/styles/reset.css'
 import './assets/styles/border.css'
 import './assets/styles/iconfont.css'
+import store from './store'
 
 Vue.use(less)
 Vue.config.productionTip = false
@@ -16,5 +17,6 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 new Vue({
   router,       //路由就是根据网址的不同，返回不同的内容给用户
-  render: h => h(App)
+  render: h => h(App),
+  store,
 }).$mount('#app')

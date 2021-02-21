@@ -14,6 +14,7 @@
           class="search-item border-bottom"
           v-for="item of list"
           :key="item.id"
+          @click="handdleCityClick(item.name)"
         >
           {{ item.name }}
         </li>
@@ -35,6 +36,14 @@ export default {
   name: "CitySearch",
   props: {
     cities: Object,
+  },
+  methods: {
+    handdleCityClick(city) {
+      this.$store.commit("changeCity", city);
+      // this.$store.dispatch('changeCity',city);
+      // 发送一个action，携带数据
+      this.$router.push('/')
+    },
   },
   data() {
     return {

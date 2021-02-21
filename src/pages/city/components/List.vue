@@ -2,17 +2,22 @@
   <div class="list" ref="wrapper">
     <div class="content">
       <div class="area">
-        <div class="title border-topbottom">当前城市{{letter}}</div>
+        <div class="title border-topbottom">当前城市{{ letter }}</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{ this.$store.state.city }}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+          <div
+            class="button-wrapper"
+            v-for="item of hotCities"
+            :key="item.id"
+            @click="handdleCityClick(item.name)"
+          >
             <div class="button">{{ item.name }}</div>
           </div>
         </div>
@@ -24,6 +29,7 @@
             class="item border-bottom"
             v-for="inItem of item"
             :key="inItem.id"
+            @click="handdleCityClick(inItem.name)"
           >
             {{ inItem.name }}
           </div>
@@ -35,6 +41,7 @@
 
 <script>
 import Bscroll from "better-scroll";
+import {mapMutations} from 'vuex'
 export default {
   name: "CityList",
   props: {
@@ -42,18 +49,27 @@ export default {
     cities: Object,
     letter: String,
   },
+  methods: {
+    handdleCityClick(city) {
+      // this.$store.commit("changeCity", city);
+      this.changeCity(city)
+      // this.$store.dispatch('changeCity',city);
+      // 发送一个action，携带数据
+      this.$router.push("/");
+    },
+    ...mapMutations(['changeCity'])
+  },
   mounted() {
     this.scroll = new Bscroll(this.$refs.wrapper);
     console.log(this.scroll);
-
   },
   watch: {
     letter() {
-        if(this.letter){
-            const element = this.$refs[this.letter][0]
-            console.log("333",element)
-            this.scroll.scrollToElement(element)  //将DOM元素传入进去，实现跳转
-        }
+      if (this.letter) {
+        const element = this.$refs[this.letter][0];
+        console.log("333", element);
+        this.scroll.scrollToElement(element); //将DOM元素传入进去，实现跳转
+      }
     },
   },
 };
