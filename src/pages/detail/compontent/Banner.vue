@@ -3,19 +3,19 @@
     <div class="banner" @click="handdleBannerClick">
       <img
         class="banner-img"
-        src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg"
+        :src="bannerImg"
         alt=""
       />
       <div class="banner-info">
-        <div class="banner-title">大连圣亚海洋世界(AAAA景区)</div>
+        <div class="banner-title">{{this.sightName}}</div>
         <div class="banner-number">
           <span class="iconfont banner-icon">&#xe629;</span>
-          39
+          {{this.gallaryImgs.length}}
         </div>
       </div>
     </div>
     <CommonGallery
-      :imgs="imgs"
+      :imgs="gallaryImgs"
       v-show="showGallery"
       @close="handdleGalleryClose"
     ></CommonGallery>
@@ -26,6 +26,11 @@
 import CommonGallery from "./../../../common/gallery/Gallery";
 export default {
   name: "DetailBanner",
+  props:{
+    sightName:String,
+    bannerImg:String,
+    gallaryImgs:Array
+  },
   methods: {
     handdleBannerClick() {
       this.showGallery = true;
@@ -36,16 +41,7 @@ export default {
   },
   data() {
     return {
-      showGallery: false,
-      imgs: [
-        "http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/086174eabf6bd34955ce7b76fb8be567.jpg?width=800&height=800&top=0&color=#5191bb",
-        "http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/086174eabf6bd34955ce7b76fb8be567.jpg?width=800&height=800&top=0&color=#5191bb",
-        "http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/086174eabf6bd34955ce7b76fb8be567.jpg?width=800&height=800&top=0&color=#5191bb",
-        "http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/086174eabf6bd34955ce7b76fb8be567.jpg?width=800&height=800&top=0&color=#5191bb",
-        "http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/086174eabf6bd34955ce7b76fb8be567.jpg?width=800&height=800&top=0&color=#5191bb",
-        "http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/086174eabf6bd34955ce7b76fb8be567.jpg?width=800&height=800&top=0&color=#5191bb",
-        "http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/086174eabf6bd34955ce7b76fb8be567.jpg?width=800&height=800&top=0&color=#5191bb",
-      ],
+      showGallery: false
     };
   },
   components: {
