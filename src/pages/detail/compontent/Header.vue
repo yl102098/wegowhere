@@ -40,6 +40,9 @@ export default {
   activated() {
     window.addEventListener("scroll", this.handdleScroll);
   },
+  deactivated() {
+    window.removeEventListener("scroll", this.handdleScroll);
+  },
 };
 </script>
 
@@ -60,6 +63,7 @@ export default {
   }
 }
 .header-back {
+  z-index: 2;
   position: fixed;
   top: 0;
   left: 0;
